@@ -1,0 +1,148 @@
+version: 2
+
+sources:
+    - name: tribal
+      description: Tribal Business Case DB
+      database: tribal
+      schema: business_case
+      tables:
+        - name: wire_transfers
+          description: Raw wire transfers data.
+          columns:
+            - name: beneficiaryid
+              description: ID for the benecifiary.
+            - name: companyid
+              description: Id for the company.
+              tests:
+                - not_null
+            - name: createdat
+              description: Date it was created.
+            - name: id
+              description: Id for de transfer.
+              tests:
+                - not_null
+                - unique
+            - name: isactive
+              description: If the transfer is active or not.
+            - name: statusid
+              description: The status of the transfer.
+              tests:
+                - not_null
+            - name: updatedat
+              description: Date for the transfer update.
+            - name: userid
+              description: Id for the company.
+              tests:
+                - not_null
+            - name: usd_amount
+              description: The amount for the transfer in USD.
+              tests:
+                - not_null
+
+        - name: wire_transfers_status
+          description: Status data for wire transfers.
+          columns:
+            - name: id
+              description: Key for the wire transfers status.
+              tests:
+                - unique
+                - not_null
+            - name: name
+              description: Status of the transfers.
+              tests:
+                - not_null
+
+        - name: card_transactions
+          description: Raw card transactions data.
+          columns:
+            - name: cardid
+              description: ID for the card
+              tests:
+                - not_null
+            - name: companyid
+              description: ID for the company
+              tests:
+                - not_null
+            - name: createdat
+              description: Date when the card transaction was created.
+              tests:
+                - not_null
+            - name: currency
+              description: Currency in which the transaction was made.
+              tests:
+                - not_null
+            - name: id
+              description: ID for the transaction
+              tests:
+                - not_null
+            - name: isactive
+              description: If the transaction is still active.
+              tests:
+                - not_null
+            - name: issuertypeid
+              description: ID of the different issuer types.
+              tests:
+                - not_null
+            - name: merchantid
+              description: ID for the different merchants.
+              tests:
+                - not_null
+            - name: statusid
+              description: ID for the different status.
+              tests:
+                - not_null
+            - name: updatedat
+              description: Date when the transaction was updated.
+              tests:
+                - not_null
+            - name: userid
+              description: ID for the users.
+              tests:
+                - not_null
+            - name: amountusd
+              description: The amount of the transaction in USD.
+              tests:
+                - not_null
+
+        - name: card_transaction_status
+          description: Status data for card transactions.
+          columns:
+            - name: id
+              description: Key for the card transactions status.
+              tests:
+                - unique
+                - not_null
+            - name: label
+              description: Label for the card transactions.
+              tests:
+                - not_null
+
+        - name: companies
+          description: Table of companies data.
+          columns:
+            - name: id
+              description: Key for the companies.
+              tests:
+                - unique
+                - not_null
+            - name: name
+              description: Companies names.
+              tests:
+                - not_null
+                - unique
+            - name: created_at
+              description: When the companies joined Tribal.
+              tests:
+                - not_null
+            - name: is_active
+              description: If the company is still active with Tribal.
+              tests:
+                - not_null
+            - name: headquarters
+              description: Where the headquarters of the companies are located.
+              tests:
+                - not_null
+            - name: industry
+              description: Type of industry of the companies.
+              tests:
+                - not_null
